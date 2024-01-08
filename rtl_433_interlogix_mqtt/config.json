@@ -1,6 +1,5 @@
 {
   "name": "rtl_433 Interlogix MQTT Auto Discovery",
-  "image": "ghcr.io/dhowett/hass-addons-rtl_433_interlogix_mqtt-{arch}",
   "version": "0.0.1",
   "slug": "rtl433interlogixmqttautodiscovery",
   "description": "Automatic discovery of rtl_433 Interlogix device information via MQTT",
