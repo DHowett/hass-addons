@@ -55,6 +55,7 @@ mappings = {
     "battery_ok": {
         "device_type": "binary_sensor",
         "object_suffix": "sensor_battery",
+        "unique_id_suffix": "battery",
         "config": {
             "name": "Battery",
             "payload_on": "0",
@@ -162,7 +163,11 @@ def publish_config(mqttc, topic, model, object_id, mapping, key=None):
 
     device_type = mapping["device_type"]
     object_suffix = mapping["object_suffix"]
+    unique_id_suffix = mapping["unique_id_suffix"] if "unique_id_suffix" in mapping else object_suffix
     object_name = "_".join([object_id.replace("-", "_"), object_suffix])
+    # I made a mistake and some of the things use _ and some use -
+    new_unique_id = "-".join([object_id, unique_id_suffix])
+    new_object_id = object_name.replace("qol_", "qolsys_")
 
     path = "/".join([args.discovery_prefix, device_type, object_id, object_name, "config"])
 
@@ -186,7 +191,8 @@ def publish_config(mqttc, topic, model, object_id, mapping, key=None):
     else:
         readable_name = mapping["config"]["name"] if "name" in mapping["config"] else key
         config["state_topic"] = topic
-        config["unique_id"] = object_name
+        config["object_id"] = new_object_id
+        config["unique_id"] = new_unique_id
         config["name"] = readable_name
     config["device"] = {
         "identifiers": [object_id],
