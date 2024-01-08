@@ -1,3 +1,4 @@
+ARG BUILD_FROM
 FROM ${BUILD_FROM}
 
 COPY rtl_433_interlogix_mqtt.py .
