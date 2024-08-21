@@ -1,0 +1,19 @@
+name: Avantgarde TV integration server
+version: 1.0.0
+slug: avantgarde
+description: Control some televisions using their integrator port (Serial, TCP)
+url: "https://github.com/DHowett/avantgarde"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+ports:
+  5456/tcp: 5456
+map:
+  - type: addon_config
+    read_only: false
+startup: application
+boot: auto
+init: false

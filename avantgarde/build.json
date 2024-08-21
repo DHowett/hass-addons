@@ -1,0 +1,9 @@
+{
+  "build_from": {
+    "aarch64": "arm64v8/golang:alpine",
+    "amd64": "golang:alpine",
+    "armhf": "arm32v6/golang:alpine",
+    "armv7": "arm32v7/golang:alpine",
+    "i386": "i386/golang:alpine"
+  }
+}
